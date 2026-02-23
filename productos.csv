@@ -1,0 +1,11 @@
+nombre,descripcion,tiempo_preparacion,ingredientes,esActivo,precio
+Pastel de Chocolate,Pastel de tres capas con cobertura de ganache de chocolate belga y decoración artesanal,45,harina|huevos|chocolate belga|mantequilla|azúcar|crema de leche|cocoa,true,185.00
+Cheesecake de Fresas,Cheesecake cremoso con base de galleta y topping de fresas frescas glaseadas,30,queso crema|galleta maría|mantequilla|azúcar|fresas|gelatina|crema de leche,true,165.00
+Tres Leches Tradicional,Bizcocho esponjoso bañado en mezcla de tres leches con merengue italiano,35,harina|huevos|azúcar|leche entera|leche condensada|leche evaporada|crema de leche,true,145.00
+Pie de Limón,Tartaleta con base crujiente rellena de crema de limón y merengue suizo tostado,25,harina|mantequilla|limones|huevos|azúcar|maicena|sal,true,125.00
+Tiramisú,Postre italiano con capas de bizcocho embebido en café espresso y crema de mascarpone,40,queso mascarpone|café espresso|bizcochos|huevos|azúcar|cocoa|licor de café,true,175.00
+Rollos de Canela,Rollos suaves de masa brioche con relleno de canela y glaseado de queso crema,50,harina|levadura|leche|mantequilla|azúcar|canela|queso crema|huevos,true,95.00
+Brownies con Nuez,Brownies densos y húmedos con trozos de nuez de macadamia y chips de chocolate,30,chocolate semi-amargo|mantequilla|huevos|azúcar|harina|nuez de macadamia|chips de chocolate,true,85.00
+Alfajores de Maicena,Galletas suaves de maicena rellenas de dulce de leche y cubiertas de coco rallado,35,maicena|harina|mantequilla|azúcar glass|dulce de leche|coco rallado|yemas de huevo,true,65.00
+Tarta de Manzana,Tarta rústica con manzanas caramelizadas especiadas y masa quebrada artesanal,55,manzanas|harina|mantequilla|azúcar|canela|nuez moscada|limón|huevos,true,155.00
+Éclairs de Vainilla,Profiteroles alargados de masa choux rellenos de crema pastelera de vainilla con glaseado de chocolate,45,harina|mantequilla|huevos|leche|vainilla|azúcar|chocolate|crema de leche,true,115.00

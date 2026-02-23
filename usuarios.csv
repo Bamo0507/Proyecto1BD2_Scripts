@@ -1,0 +1,21 @@
+nombre_usuario,contrasenia,tipo_usuario,direccion
+admin_carlos,admin123,admin,12 Calle 3-45 Zona 1 Guatemala
+admin_lucia,admin456,admin,6a Avenida 9-12 Zona 10 Guatemala
+cliente_maria,maria2024,cliente,15 Calle 7-89 Zona 11 Guatemala
+cliente_jose,jose2024,cliente,2a Calle 4-56 Zona 14 Guatemala
+cliente_ana,ana2024,cliente,8a Avenida 12-34 Zona 9 Guatemala
+cliente_pedro,pedro2024,cliente,4a Calle Oriente 15 Antigua Guatemala
+cliente_sofia,sofia2024,cliente,10 Calle 5-67 Zona 1 Quetzaltenango
+cliente_diego,diego2024,cliente,3a Avenida 8-90 Zona 2 Cobán
+cliente_valentina,vale2024,cliente,Calle Real 12-45 Zona 3 Escuintla
+cliente_andres,andres2024,cliente,7a Calle 3-21 Zona 16 Guatemala
+cliente_gabriela,gaby2024,cliente,Boulevard Vista Hermosa 9-10 Zona 15 Guatemala
+cliente_fernando,fer2024,cliente,1a Calle 6-78 Zona 4 Guatemala
+cliente_isabella,isa2024,cliente,14 Avenida 2-33 Zona 1 Quetzaltenango
+cliente_ricardo,rick2024,cliente,5a Avenida 11-22 Zona 13 Guatemala
+cliente_camila,cami2024,cliente,9 Calle 4-56 Zona 7 Guatemala
+cliente_miguel,migue2024,cliente,2a Calle 7-89 Zona 5 Guatemala
+cliente_daniela,dani2024,cliente,6 Calle 8-12 Zona 12 Guatemala
+cliente_alejandro,alex2024,cliente,3a Calle 15-67 Zona 2 Petén
+cliente_paula,pau2024,cliente,11 Avenida 3-45 Zona 8 Guatemala
+cliente_sebastian,seba2024,cliente,Paseo Cayalá Local 23 Zona 16 Guatemala

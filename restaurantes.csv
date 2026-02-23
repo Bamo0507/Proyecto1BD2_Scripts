@@ -1,0 +1,11 @@
+nombre_restaurante,codigo_postal,calle,zona,avenida,telefonos,horario_entre_semana,horario_fines_de_semana,horario_asueto
+Dulce Tentación Centro Histórico,01001,6a Calle,1,4a Avenida,2232-1001|2232-1002,8:00 - 20:00,9:00 - 21:00,10:00 - 18:00
+Dulce Tentación Zona 10,01010,2a Calle,10,12 Avenida,2368-2001|2368-2002|2368-2003,7:30 - 21:00,8:00 - 22:00,9:00 - 18:00
+Dulce Tentación Miraflores,01011,21 Calle,11,7a Avenida,2476-3001,8:00 - 20:30,9:00 - 21:00,10:00 - 17:00
+Dulce Tentación Cayalá,01016,Boulevard Rafael Landívar,16,Paseo Cayalá,2269-4001|2269-4002,7:00 - 21:00,8:00 - 22:00,9:00 - 19:00
+Dulce Tentación Antigua,03001,4a Calle Oriente,Central,3a Avenida Norte,7832-5001|7832-5002,8:00 - 20:00,8:00 - 21:00,9:00 - 18:00
+Dulce Tentación Xela,09001,14 Avenida,1,4a Calle,7761-6001,8:30 - 19:30,9:00 - 20:00,10:00 - 17:00
+Dulce Tentación Escuintla,05001,3a Calle,1,2a Avenida,7888-7001|7888-7002,8:00 - 19:00,8:00 - 20:00,10:00 - 16:00
+Dulce Tentación Cobán,16001,1a Calle,2,5a Avenida,7951-8001,8:00 - 19:00,9:00 - 19:30,10:00 - 16:00
+Dulce Tentación Petén,17001,Calle Centro Comercial,Central,5a Avenida,7926-9001|7926-9002,8:00 - 18:30,8:30 - 19:00,10:00 - 16:00
+Dulce Tentación Huehuetenango,13001,5a Calle,1,4a Avenida,7764-0001,8:30 - 19:00,9:00 - 19:30,10:00 - 16:00
