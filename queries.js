@@ -304,3 +304,165 @@ db.restaurantes.updateOne(
   }
 );
 
+
+// CLIENTE - Pedidos
+// GET /cliente/pedidos - getClientOrders
+db.pedidos.find(
+  {
+    id_usuario: ObjectId("699c956651574deec4cefa88"),
+    fecha_pedido: {
+      $gte: ISODate("2025-06-01T00:00:00Z"),
+      $lte: ISODate("2025-12-31T23:59:59Z")
+    }
+  },
+  {
+    fecha_pedido: 1,
+    id_restaurante: 1,
+    total: 1,
+    estado: 1
+  }
+).sort({ fecha_pedido: -1 }).skip(0).limit(10).explain("executionStats");
+
+// POST /cliente/pedidos - createOrder
+db.pedidos.insertOne({
+  fecha_pedido: new Date(),
+  id_usuario: ObjectId("699c956651574deec4cefa87"),
+  id_restaurante: ObjectId("699c956551574deec4cefa7b"),
+  productos: [
+    {
+      producto_id: ObjectId("699c957051574deec4cefaaf"),
+      cantidad: 2,
+      precio_unitario: 185.00
+    },
+    {
+      producto_id: ObjectId("699c956a51574deec4cefa9d"),
+      cantidad: 1,
+      precio_unitario: 165.00
+    }
+  ],
+  estado: "En cocina",
+  total: 535.00
+});
+
+// GET /restaurantes/nombres - getRestaurantsNames
+db.restaurantes.find(
+  { esActivo: true },
+  {
+    nombre_restaurante: 1
+  }
+).sort({ nombre_restaurante: 1 }).explain("executionStats");
+
+// GET /productos/lista - getProductsAvailable
+db.productos.find(
+  { esActivo: true },
+  {
+    nombre: 1,
+    precio: 1
+  }
+).sort({ nombre: 1 }).explain("executionStats");
+
+// CLIENTE - Reseñas
+// GET /cliente/resenias - getClientReviews
+db.resenias.aggregate([
+  {
+    $match: {
+      id_usuario: ObjectId("699c956651574deec4cefa93")
+    }
+  },
+  {
+    $lookup: {
+      from: "restaurantes",
+      localField: "id_restaurante",
+      foreignField: "_id",
+      as: "restaurante"
+    }
+  },
+  { $unwind: "$restaurante" },
+  {
+    $lookup: {
+      from: "pedidos",
+      localField: "id_pedido",
+      foreignField: "_id",
+      as: "pedido"
+    }
+  },
+  { $unwind: "$pedido" },
+  {
+    $project: {
+      nombre_restaurante: "$restaurante.nombre_restaurante",
+      fecha_pedido: "$pedido.fecha_pedido",
+      puntuacion: 1,
+      fecha: 1
+    }
+  },
+  { $sort: { fecha: -1 } },
+  { $skip: 0 },
+  { $limit: 10 }
+]).explain("executionStats");
+
+// POST /cliente/resenias - createReview
+db.resenias.insertOne({
+  titulo: "Excelente experiencia",
+  id_usuario: ObjectId("699c956651574deec4cefa88"),
+  id_restaurante: ObjectId("699c956551574deec4cefa7f"),
+  id_pedido: ObjectId("699c973fb10742d08166e9e5"),
+  descripcion: "Todo estuvo delicioso, muy recomendado.",
+  puntuacion: 5,
+  fecha: new Date()
+});
+
+// GET /cliente/pedidos/recientes - getClientRecentOrders
+db.pedidos.aggregate([
+  {
+    $match: {
+      id_usuario: ObjectId("699c956651574deec4cefa88"),
+      estado: "Recibido"
+    }
+  },
+  { $sort: { fecha_pedido: -1 } },
+  { $limit: 5 },
+  {
+    $lookup: {
+      from: "restaurantes",
+      localField: "id_restaurante",
+      foreignField: "_id",
+      as: "restaurante"
+    }
+  },
+  { $unwind: "$restaurante" },
+  {
+    $project: {
+      nombre_restaurante: "$restaurante.nombre_restaurante",
+      fecha_pedido: 1
+    }
+  }
+]).explain("executionStats");
+
+// PUT /cliente/resenias/:id - updateReview
+db.resenias.updateOne(
+  { _id: ObjectId("699c9778b10742d08167ad35") },
+  {
+    $set: {
+      titulo: "MUY Bueno",
+      descripcion: "De los mejor que he probado",
+      puntuacion: 4
+    }
+  }
+);
+
+// DELETE /cliente/resenias/:id - deleteReview
+db.resenias.deleteOne(
+  { _id: ObjectId("699c9778b10742d08167ad36") }
+);
+
+// DELETE /cliente/resenias - deleteReviews
+db.resenias.deleteMany(
+  {
+    _id: {
+      $in: [
+        ObjectId("699c9778b10742d08167ad37"),
+        ObjectId("699c9778b10742d08167ad38"),
+      ]
+    }
+  }
+);
