@@ -43,6 +43,14 @@ db.resenias.find(
   }
 ).sort({ fecha: -1 }).skip(0).limit(10).explain("executionStats");
 
+db.resenias.countDocuments({
+  puntuacion: 5,
+  fecha: {
+    $gte: ISODate("2025-06-01T00:00:00Z"),
+    $lte: ISODate("2025-12-31T23:59:59Z")
+  }
+});
+
 // GET /admin/resenias/buscar?q= - getReviewsAdminBySearch
 db.resenias.find(
   { $text: { $search: "chocolate delicioso" } },
@@ -54,6 +62,10 @@ db.resenias.find(
     score: { $meta: "textScore" }
   }
 ).sort({ score: { $meta: "textScore" } }).skip(0).limit(10).explain("executionStats");
+
+db.resenias.countDocuments({
+  $text: { $search: "chocolate delicioso" }
+});
 
 // GET /admin/resenias/:id - getReviewsAdminById
 db.resenias.aggregate([
@@ -132,6 +144,13 @@ db.pedidos.aggregate([
   { $limit: 10 }
 ]).explain("executionStats");
 
+db.pedidos.countDocuments({
+  fecha_pedido: {
+    $gte: ISODate("2025-06-01T00:00:00Z"),
+    $lte: ISODate("2025-12-31T23:59:59Z")
+  }
+});
+
 // GET /shared/pedidos/:id - getOrdersById
 db.pedidos.aggregate([
   { $match: { _id: ObjectId("699c973fb10742d08166e9e5") } },
@@ -203,6 +222,37 @@ db.productos.insertOne({
   precio: 120.00
 });
 
+// POST /admin/productos - createProducts
+db.productos.insertMany([
+  {
+    nombre: "Tarta de Fresa",
+    descripcion: "Tarta casera rellena de crema y fresas naturales.",
+    tiempo_preparacion: 45,
+    ingredientes: ["harina", "azúcar", "huevos", "fresas", "crema"],
+    imagen: null,
+    esActivo: true,
+    precio: 180.00
+  },
+  {
+    nombre: "Cupcake de Chocolate",
+    descripcion: "Cupcake esponjoso con cobertura de chocolate.",
+    tiempo_preparacion: 25,
+    ingredientes: ["harina", "azúcar", "huevos", "cacao", "mantequilla"],
+    imagen: null,
+    esActivo: true,
+    precio: 35.00
+  },
+  {
+    nombre: "Galletas de Avena",
+    descripcion: "Galletas crujientes con avena y chispas de chocolate.",
+    tiempo_preparacion: 20,
+    ingredientes: ["avena", "harina", "azúcar", "huevos", "chispas de chocolate"],
+    imagen: null,
+    esActivo: true,
+    precio: 60.00
+  }
+]);
+
 // GET /admin/productos/ingredientes - getIngredients
 db.productos.aggregate([
   { $match: { ingredientes: { $exists: true } } },
@@ -220,6 +270,8 @@ db.productos.aggregate([
     }
   }
 ]).explain("executionStats");
+
+db.productos.distinct("ingredientes")
 
 // PUT /admin/productos/:id - updateProduct
 db.productos.updateOne(
@@ -304,7 +356,6 @@ db.restaurantes.updateOne(
   }
 );
 
-
 // CLIENTE - Pedidos
 // GET /cliente/pedidos - getClientOrders
 db.pedidos.find(
@@ -322,6 +373,14 @@ db.pedidos.find(
     estado: 1
   }
 ).sort({ fecha_pedido: -1 }).skip(0).limit(10).explain("executionStats");
+
+db.pedidos.countDocuments({
+  id_usuario: ObjectId("699c956651574deec4cefa88"),
+  fecha_pedido: {
+    $gte: ISODate("2025-06-01T00:00:00Z"),
+    $lte: ISODate("2025-12-31T23:59:59Z")
+  }
+});
 
 // POST /cliente/pedidos - createOrder
 db.pedidos.insertOne({
@@ -399,6 +458,10 @@ db.resenias.aggregate([
   { $skip: 0 },
   { $limit: 10 }
 ]).explain("executionStats");
+
+db.resenias.countDocuments({
+  id_usuario: ObjectId("699c956651574deec4cefa93")
+});
 
 // POST /cliente/resenias - createReview
 db.resenias.insertOne({
